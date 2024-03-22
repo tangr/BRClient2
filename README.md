@@ -23,13 +23,17 @@ For Mac user, unzip the zip file and then open the BRClient.app directly.
 Download links:
 
 Windows:
-https://github.com/DamonDeng/BRClient/releases/download/alpha2/brclient_windows.zip
+https://github.com/DamonDeng/BRClient/releases/download/beta1/brclient_windows.zip
+
 
 Mac M Series:
-https://github.com/DamonDeng/BRClient/releases/download/alpha2/brclient_m_series.zip
+https://github.com/DamonDeng/BRClient/releases/download/beta1/brclient_m_series.zip
+
 
 Mac x86 Series:
-https://github.com/DamonDeng/BRClient/releases/download/alpha2/brclient_x86_mac.zip
+https://github.com/DamonDeng/BRClient/releases/download/beta1/brclient_x86_mac.zip
+
+
 
 
 After the client was launched, click the gear icon to config your AWS region and credentials. Then you are ready to go.
