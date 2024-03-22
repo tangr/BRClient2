@@ -1,5 +1,5 @@
 import { ModalConfigValidator, ModelConfig, useAppConfig } from "../store";
-
+import { useEffect } from "react";
 import Locale from "../locales";
 import { InputRange } from "./input-range";
 import { ListItem, Select } from "./ui-lib";
@@ -7,12 +7,27 @@ import { ListItem, Select } from "./ui-lib";
 import { IconButton } from "./button";
 import ResetIcon from "../icons/reload.svg";
 import { LLMModel } from "../client/api";
+import { DEFAULT_MODELS } from "@/app/constant";
 
 export function ModelConfigList(props: {
   modelConfig: ModelConfig;
   updateConfig: (updater: (config: ModelConfig) => void) => void;
 }) {
   const appConfig = useAppConfig();
+
+  useEffect(() => {
+    const storedModels: LLMModel[] = appConfig.models;
+    if (
+      !storedModels ||
+      storedModels.length === 0 ||
+      !storedModels[0].displayName
+    ) {
+      appConfig.update(
+        (config) => (config.models = DEFAULT_MODELS as any as LLMModel[]),
+      );
+    }
+  });
+
   return (
     <>
       <ListItem title={Locale.Settings.Model}>
@@ -32,7 +47,7 @@ export function ModelConfigList(props: {
               .filter((v) => v.available)
               .map((v, i) => (
                 <option value={v.name} key={i}>
-                  {v.displayName}({v.provider?.providerName})
+                  {v.displayName || v.name}({v.provider?.providerName})
                 </option>
               ))}
           </Select>
