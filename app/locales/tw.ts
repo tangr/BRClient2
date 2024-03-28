@@ -177,6 +177,10 @@ const tw = {
       Title: "預覽氣泡",
       SubTitle: "在預覽氣泡中預覽 Markdown 內容",
     },
+    Metrics: {
+      Title: "指標",
+      SubTitle: "顯示模型返回的指標資訊，如token統計",
+    },
     AutoGenerateTitle: {
       Title: "自動生成標題",
       SubTitle: "根據對話內容生成合適的標題",
@@ -467,8 +471,8 @@ const tw = {
 
 type DeepPartial<T> = T extends object
   ? {
-    [P in keyof T]?: DeepPartial<T[P]>;
-  }
+      [P in keyof T]?: DeepPartial<T[P]>;
+    }
   : T;
 
 export type LocaleType = typeof tw;

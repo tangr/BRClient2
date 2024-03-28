@@ -178,6 +178,11 @@ const en: LocaleType = {
       Title: "Send Preview Bubble",
       SubTitle: "Preview markdown in bubble",
     },
+    Metrics: {
+      Title: "Metrics",
+      SubTitle:
+        "Display the metrics information returned by the model, such as token statistics",
+    },
     AutoGenerateTitle: {
       Title: "Auto Generate Title",
       SubTitle: "Generate a suitable title based on the conversation content",

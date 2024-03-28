@@ -1422,6 +1422,18 @@ function _Chat() {
 
           const shouldShowClearContextDivider = i === clearContextIndex - 1;
 
+          let metrics = "";
+          if (
+            config.metrics &&
+            message.metrics &&
+            typeof message.metrics == "object"
+          ) {
+            for (const [key, value] of Object.entries(message.metrics)) {
+              metrics += `${key} : ${value}  `;
+            }
+          }
+          //console.log(`Total message is ` + Object.entries(message).map(([key, value]) => `${key}: ${value}`).join(', '));
+
           return (
             <Fragment key={message.id}>
               <div
@@ -1585,6 +1597,9 @@ function _Chat() {
                     {isContext
                       ? Locale.Chat.IsContext
                       : message.date.toLocaleString()}
+                  </div>
+                  <div className={styles["chat-message-action-metrics"]}>
+                    {metrics}
                   </div>
                 </div>
               </div>

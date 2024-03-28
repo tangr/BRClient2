@@ -333,6 +333,8 @@ export class ClaudeApi implements LLMApi {
         REQUEST_TIMEOUT_MS,
       );
 
+      let metrics = null;
+
       if (shouldStream) {
         console.log("streaming");
         let responseText = "";
@@ -365,7 +367,7 @@ export class ClaudeApi implements LLMApi {
           if (!finished) {
             finished = true;
 
-            options.onFinish(responseText + remainText);
+            options.onFinish(responseText + remainText, metrics);
           }
         };
 
@@ -389,12 +391,17 @@ export class ClaudeApi implements LLMApi {
               );
               const responseBody = JSON.parse(decodedResponseBody);
 
-              // console.log("streaming response:", responseBody);
+              console.log("streaming response:", responseBody);
 
               if (responseBody.delta?.type === "text_delta") {
                 // console.log('delta', responseBody.delta.text);
 
                 remainText += responseBody.delta.text;
+              }
+
+              if (responseBody.type === "message_stop") {
+                //remainText += JSON.stringify(responseBody["amazon-bedrock-invocationMetrics"]);
+                metrics = responseBody["amazon-bedrock-invocationMetrics"];
               }
             }
           }
@@ -416,10 +423,15 @@ export class ClaudeApi implements LLMApi {
         const decodedResponseBody = new TextDecoder().decode(res.body);
         const responseBody = JSON.parse(decodedResponseBody);
 
-        // console.log("response", responseBody.content);
+        //console.log("response", responseBody.content);
+        //console.log("response", responseBody.usage);
+        //console.log(`Total responseBody is ` + Object.entries(responseBody).map(([key, value]) => `${key}: ${value}`).join(', '));
 
         const message = responseBody.content;
-        options.onFinish(message);
+        if (responseBody.usage) {
+          metrics = responseBody.usage;
+        }
+        options.onFinish(message, metrics);
       }
     } catch (e) {
       console.log("[Request] failed to make a chat request", e);
