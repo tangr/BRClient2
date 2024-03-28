@@ -176,6 +176,10 @@ const cn = {
       Title: "预览气泡",
       SubTitle: "在预览气泡中预览 Markdown 内容",
     },
+    Metrics: {
+      Title: "指标",
+      SubTitle: "显示模型返回的指标信息，如token统计",
+    },
     AutoGenerateTitle: {
       Title: "自动生成标题",
       SubTitle: "根据对话内容生成合适的标题",

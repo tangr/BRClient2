@@ -825,6 +825,21 @@ export function Settings() {
               }
             ></input>
           </ListItem>
+
+          <ListItem
+            title={Locale.Settings.Metrics.Title}
+            subTitle={Locale.Settings.Metrics.SubTitle}
+          >
+            <input
+              type="checkbox"
+              checked={config.metrics}
+              onChange={(e) =>
+                updateConfig(
+                  (config) => (config.metrics = e.currentTarget.checked),
+                )
+              }
+            ></input>
+          </ListItem>
         </List>
 
         <SyncItems />

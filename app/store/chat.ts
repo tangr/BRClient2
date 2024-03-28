@@ -27,6 +27,7 @@ export type ChatMessage = RequestMessage & {
   isError?: boolean;
   id: string;
   model?: ModelType;
+  metrics: object;
 };
 
 export function createMessage(override: Partial<ChatMessage>): ChatMessage {
@@ -399,12 +400,18 @@ export const useChatStore = createPersistStore(
               session.messages = session.messages.concat();
             });
           },
-          onFinish(message) {
+          onFinish(message, metrics) {
             botMessage.streaming = false;
             if (message) {
               botMessage.content = message;
               get().onNewMessage(botMessage);
             }
+            if (metrics) {
+              botMessage.metrics = metrics;
+            }
+            get().updateCurrentSession((session) => {
+              session.messages = session.messages.concat();
+            });
             ChatControllerPool.remove(session.id, botMessage.id);
           },
           onError(error) {
