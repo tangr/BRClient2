@@ -50,6 +50,23 @@ As the project is still in rapid itelating, we would like to suggest developers 
 5. run `yarn app:dev` to start a desktop app in developer mode.    or:   run `yarn dev` to start a local server and then access the app with browser.
 6. Optional, if you want to run it as an app, run `yarn app:build` to build it, and the find the target file (we believe you can, :-)
 
+### Least-privilege IAM Permission
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "LeastPrivilege4BRClient",
+            "Effect": "Allow",
+            "Action": [
+                "bedrock:InvokeModel",
+                "bedrock:InvokeModelWithResponseStream"
+            ],
+            "Resource": "arn:aws:bedrock:*::foundation-model/anthropic.claude-3*"
+        }
+    ]
+}
+```
 
 ## Donation
 If you like this project, buy original author yidadaa a Coffee
