@@ -284,6 +284,10 @@ const cn = {
         Title: "自定义接口",
         SubTitle: "是否使用自定义 Azure 或 OpenAI 服务",
       },
+      BrProxy: {
+        Title: "Enable BrProxy",
+        SubTitle: "Enable BrProxy",
+      },
       Provider: {
         Title: "模型服务商",
         SubTitle: "切换不同的服务商",
@@ -305,6 +309,17 @@ const cn = {
           Title: "Secret Key",
           SubTitle: "配置Secret Key",
           Placeholder: "输入 secret key, xxxxxxxxxxxxxxxxxxxxxxxxxx",
+        },
+
+        Endpoint: {
+          Title: "AWS Endpoint",
+          SubTitle: "AWS Endpoint",
+        },
+
+        ApiKey: {
+          Title: "API Key",
+          SubTitle: "API Key",
+          Placeholder: "Enter API key, xxxxxxxxxxxxxxxxxxxxxxxxxx",
         },
       },
       OpenAI: {

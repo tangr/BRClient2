@@ -288,6 +288,10 @@ const en: LocaleType = {
         Title: "Custom Endpoint",
         SubTitle: "Use custom Azure or OpenAI service",
       },
+      BrProxy: {
+        Title: "Enable BrProxy",
+        SubTitle: "Enable BrProxy",
+      },
       Provider: {
         Title: "Model Provider",
         SubTitle: "Select a model provider",
@@ -309,6 +313,17 @@ const en: LocaleType = {
           Title: "Secret Key",
           SubTitle: "Config Secret Key",
           Placeholder: "input secret key, xxxxxxxxxxxxxxxxxxxxxxxxxx",
+        },
+
+        Endpoint: {
+          Title: "AWS Endpoint",
+          SubTitle: "AWS Endpoint",
+        },
+
+        ApiKey: {
+          Title: "API Key",
+          SubTitle: "API Key",
+          Placeholder: "Enter API key, xxxxxxxxxxxxxxxxxxxxxxxxxx",
         },
       },
       OpenAI: {
