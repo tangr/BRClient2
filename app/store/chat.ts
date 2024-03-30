@@ -27,7 +27,7 @@ export type ChatMessage = RequestMessage & {
   isError?: boolean;
   id: string;
   model?: ModelType;
-  metrics: object;
+  metrics?: object;
 };
 
 export function createMessage(override: Partial<ChatMessage>): ChatMessage {

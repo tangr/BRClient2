@@ -58,6 +58,8 @@ import {
   RELEASE_URL,
   STORAGE_KEY,
   ServiceProvider,
+  UseBrProxy,
+  BrProxy,
   SlotID,
   UPDATE_URL,
 } from "../constant";
@@ -979,60 +981,134 @@ export function Settings() {
                   {accessStore.provider === "AWS" ? (
                     <>
                       <ListItem
-                        title={Locale.Settings.Access.AWS.Region.Title}
-                        subTitle={Locale.Settings.Access.AWS.Region.SubTitle}
+                        title={Locale.Settings.Access.BrProxy.Title}
+                        subTitle={Locale.Settings.Access.BrProxy.SubTitle}
                       >
-                        <input
-                          type="text"
-                          value={accessStore.awsRegion}
-                          placeholder={
-                            Locale.Settings.Access.AWS.Region.Placeholder
-                          }
-                          onChange={(e) =>
-                            accessStore.update(
-                              (access) =>
-                                (access.awsRegion = e.currentTarget.value),
-                            )
-                          }
-                        ></input>
-                      </ListItem>
-                      <ListItem
-                        title={Locale.Settings.Access.AWS.AccessKey.Title}
-                        subTitle={Locale.Settings.Access.AWS.AccessKey.SubTitle}
-                      >
-                        <PasswordInput
-                          value={accessStore.awsAccessKeyId}
-                          type="text"
-                          placeholder={
-                            Locale.Settings.Access.AWS.AccessKey.Placeholder
-                          }
+                        <Select
+                          value={accessStore.useBrProxy}
                           onChange={(e) => {
                             accessStore.update(
                               (access) =>
-                                (access.awsAccessKeyId = e.currentTarget.value),
+                                (access.useBrProxy = e.target
+                                  .value as UseBrProxy),
                             );
                           }}
-                        />
+                        >
+                          {Object.entries(UseBrProxy).map(([k, v]) => (
+                            <option value={v} key={k}>
+                              {k}
+                            </option>
+                          ))}
+                        </Select>
                       </ListItem>
-                      <ListItem
-                        title={Locale.Settings.Access.AWS.SecretKey.Title}
-                        subTitle={Locale.Settings.Access.AWS.SecretKey.SubTitle}
-                      >
-                        <PasswordInput
-                          value={accessStore.awsSecretAccessKey}
-                          type="text"
-                          placeholder={
-                            Locale.Settings.Access.AWS.SecretKey.Placeholder
-                          }
-                          onChange={(e) => {
-                            accessStore.update(
-                              (access) =>
-                                (access.awsSecretAccessKey =
-                                  e.currentTarget.value),
-                            );
-                          }}
-                        />
-                      </ListItem>
+                      {accessStore.useBrProxy === "False" ? (
+                        <>
+                          <ListItem
+                            title={Locale.Settings.Access.AWS.Region.Title}
+                            subTitle={
+                              Locale.Settings.Access.AWS.Region.SubTitle
+                            }
+                          >
+                            <input
+                              type="text"
+                              value={accessStore.awsRegion}
+                              placeholder={
+                                Locale.Settings.Access.AWS.Region.Placeholder
+                              }
+                              onChange={(e) =>
+                                accessStore.update(
+                                  (access) =>
+                                    (access.awsRegion = e.currentTarget.value),
+                                )
+                              }
+                            ></input>
+                          </ListItem>
+                          <ListItem
+                            title={Locale.Settings.Access.AWS.AccessKey.Title}
+                            subTitle={
+                              Locale.Settings.Access.AWS.AccessKey.SubTitle
+                            }
+                          >
+                            <PasswordInput
+                              value={accessStore.awsAccessKeyId}
+                              type="text"
+                              placeholder={
+                                Locale.Settings.Access.AWS.AccessKey.Placeholder
+                              }
+                              onChange={(e) => {
+                                accessStore.update(
+                                  (access) =>
+                                    (access.awsAccessKeyId =
+                                      e.currentTarget.value),
+                                );
+                              }}
+                            />
+                          </ListItem>
+                          <ListItem
+                            title={Locale.Settings.Access.AWS.SecretKey.Title}
+                            subTitle={
+                              Locale.Settings.Access.AWS.SecretKey.SubTitle
+                            }
+                          >
+                            <PasswordInput
+                              value={accessStore.awsSecretAccessKey}
+                              type="text"
+                              placeholder={
+                                Locale.Settings.Access.AWS.SecretKey.Placeholder
+                              }
+                              onChange={(e) => {
+                                accessStore.update(
+                                  (access) =>
+                                    (access.awsSecretAccessKey =
+                                      e.currentTarget.value),
+                                );
+                              }}
+                            />
+                          </ListItem>
+                        </>
+                      ) : accessStore.useBrProxy === "True" ? (
+                        <>
+                          <ListItem
+                            title={Locale.Settings.Access.AWS.Endpoint.Title}
+                            subTitle={
+                              Locale.Settings.Access.AWS.Endpoint.SubTitle
+                            }
+                          >
+                            <input
+                              type="text"
+                              value={accessStore.googleUrl}
+                              placeholder={BrProxy.ExampleEndpoint}
+                              onChange={(e) =>
+                                accessStore.update(
+                                  (access) =>
+                                    (access.googleUrl = e.currentTarget.value),
+                                )
+                              }
+                            ></input>
+                          </ListItem>
+                          <ListItem
+                            title={Locale.Settings.Access.AWS.ApiKey.Title}
+                            subTitle={
+                              Locale.Settings.Access.AWS.ApiKey.SubTitle
+                            }
+                          >
+                            <PasswordInput
+                              value={accessStore.openaiApiKey}
+                              type="text"
+                              placeholder={
+                                Locale.Settings.Access.OpenAI.ApiKey.Placeholder
+                              }
+                              onChange={(e) => {
+                                accessStore.update(
+                                  (access) =>
+                                    (access.openaiApiKey =
+                                      e.currentTarget.value),
+                                );
+                              }}
+                            />
+                          </ListItem>
+                        </>
+                      ) : null}
                     </>
                   ) : accessStore.provider === "OpenAI" ? (
                     <>

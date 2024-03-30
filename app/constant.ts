@@ -63,6 +63,11 @@ export const REQUEST_TIMEOUT_MS = 60000;
 
 export const EXPORT_MESSAGE_CLASS_NAME = "export-markdown";
 
+export enum UseBrProxy {
+  True = "True",
+  False = "False",
+}
+
 export enum ServiceProvider {
   OpenAI = "OpenAI",
   Azure = "Azure",
@@ -95,6 +100,10 @@ export const Google = {
   VisionChatPath: "v1beta/models/gemini-pro-vision:generateContent",
 
   // /api/openai/v1/chat/completions
+};
+
+export const BrProxy = {
+  ExampleEndpoint: "http://localhost:8866",
 };
 
 export const DEFAULT_INPUT_TEMPLATE = `{{input}}`; // input / time / model / lang
