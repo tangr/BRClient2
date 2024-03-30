@@ -333,7 +333,8 @@ export class ClaudeApi implements LLMApi {
         REQUEST_TIMEOUT_MS,
       );
 
-      let metrics = null;
+      //let metrics = null;
+      let metrics: any = {};
 
       if (shouldStream) {
         console.log("streaming");
