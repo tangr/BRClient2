@@ -290,7 +290,8 @@ const en: LocaleType = {
       },
       BrProxy: {
         Title: "Enable BrProxy",
-        SubTitle: "Enable BrProxy",
+        SubTitle:
+          "Choose False if you wanna use AKSK, True if you wanna use BrProxy",
       },
       Provider: {
         Title: "Model Provider",

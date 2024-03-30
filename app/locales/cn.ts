@@ -286,7 +286,7 @@ const cn = {
       },
       BrProxy: {
         Title: "Enable BrProxy",
-        SubTitle: "Enable BrProxy",
+        SubTitle: "如果使用AKSK请选择False，如果使用BrProxy请选择True",
       },
       Provider: {
         Title: "模型服务商",
