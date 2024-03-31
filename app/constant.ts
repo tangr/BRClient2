@@ -104,6 +104,7 @@ export const Google = {
 
 export const BrProxy = {
   ExampleEndpoint: "http://localhost:8866",
+  ChatPath: "v1/chat/completions",
 };
 
 export const DEFAULT_INPUT_TEMPLATE = `{{input}}`; // input / time / model / lang
