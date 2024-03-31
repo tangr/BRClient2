@@ -27,6 +27,7 @@ const DEFAULT_ACCESS_STATE = {
   awsAccessKeyId: "",
   awsSecretAccessKey: "",
   awsRegion: "",
+  brproxyUrl: "",
 
   // openai
   openaiUrl: DEFAULT_OPENAI_URL,

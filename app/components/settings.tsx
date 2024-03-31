@@ -1076,12 +1076,12 @@ export function Settings() {
                           >
                             <input
                               type="text"
-                              value={accessStore.googleUrl}
+                              value={accessStore.brproxyUrl}
                               placeholder={BrProxy.ExampleEndpoint}
                               onChange={(e) =>
                                 accessStore.update(
                                   (access) =>
-                                    (access.googleUrl = e.currentTarget.value),
+                                    (access.brproxyUrl = e.currentTarget.value),
                                 )
                               }
                             ></input>
