@@ -602,9 +602,6 @@ export const useChatStore = createPersistStore(
               model: getSummarizeModel(session.mask.modelConfig.model),
             },
             onFinish(message) {
-              message = modelConfig.model.startsWith("claude")
-                ? (message[0] as any)["text"]
-                : message;
               get().updateCurrentSession(
                 (session) =>
                   (session.topic =

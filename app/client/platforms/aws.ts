@@ -392,7 +392,7 @@ export class ClaudeApi implements LLMApi {
               );
               const responseBody = JSON.parse(decodedResponseBody);
 
-              console.log("streaming response:", responseBody);
+              // console.log("streaming response:", responseBody);
 
               if (responseBody.delta?.type === "text_delta") {
                 // console.log('delta', responseBody.delta.text);
@@ -428,7 +428,7 @@ export class ClaudeApi implements LLMApi {
         //console.log("response", responseBody.usage);
         //console.log(`Total responseBody is ` + Object.entries(responseBody).map(([key, value]) => `${key}: ${value}`).join(', '));
 
-        const message = responseBody.content;
+        const message = responseBody.content[0]["text"];
         if (responseBody.usage) {
           metrics = responseBody.usage;
         }
