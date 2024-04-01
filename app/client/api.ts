@@ -164,9 +164,11 @@ export class ClientApi {
 
 export function getHeaders() {
   const accessStore = useAccessStore.getState();
+  const mask = useChatStore.getState().currentSession().mask;
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
     Accept: "application/json",
+    "Session-Id": mask.id,
   };
   const modelConfig = useChatStore.getState().currentSession().mask.modelConfig;
   const isGoogle = modelConfig.model.startsWith("gemini");
